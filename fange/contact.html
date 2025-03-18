@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我们 - 数据分析培训中心</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- 添加一个简单的图标字体库 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        /* 联系我们页面特定样式 */
+        .page-header {
+            background: linear-gradient(135deg, #3399ff 0%, #0066cc 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin: 80px 0;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .contact-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            display: flex;
+            align-items: flex-start;
+            transition: var(--transition);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        .contact-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .contact-content p {
+            color: var(--dark-gray);
+            margin-bottom: 5px;
+        }
+        
+        .contact-form {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--radius);
+            outline: none;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .map-container {
+            margin-top: 80px;
+            height: 400px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-gray);
+            font-size: 1.2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+        
+        .faq-section {
+            background-color: var(--light-gray);
+            padding: 80px 0;
+            margin-top: 80px;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover {
+            background-color: rgba(0, 102, 204, 0.05);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+        
+        .faq-toggle {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-toggle.active {
+            transform: rotate(180deg);
+        }
+        
+        @media (max-width: 1024px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .contact-info {
+                order: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="logo">
+                <!-- Logo占位符 -->
+                <h1>数据培训</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="training.html">培训课程</a></li>
+                <li><a href="tools.html">工具产品</a></li>
+                <li><a href="books.html">图书资源</a></li>
+                <li><a href="articles.html">技术文章</a></li>
+                <li><a href="contact.html" class="active">联系我们</a></li>
+            </ul>
+            <div class="mobile-menu-btn">
+                <i class="bi bi-list"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面头部 -->
+    <header class="page-header">
+        <div class="container">
+            <h1>联系我们</h1>
+            <p>我们期待听到您的声音，随时为您提供帮助</p>
+        </div>
+    </header>
+
+    <!-- 联系信息和表单 -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-form">
+                    <h2 style="margin-bottom: 30px;">发送消息</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">您的姓名</label>
+                            <input type="text" id="name" class="form-control" placeholder="请输入您的姓名">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">电子邮箱</label>
+                            <input type="email" id="email" class="form-control" placeholder="请输入您的电子邮箱">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">联系电话</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="请输入您的联系电话">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">主题</label>
+                            <select id="subject" class="form-control">
+                                <option value="">请选择主题</option>
+                                <option value="course">培训课程咨询</option>
+                                <option value="tool">工具产品咨询</option>
+                                <option value="book">图书资源咨询</option>
+                                <option value="cooperation">商务合作</option>
+                                <option value="other">其他问题</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">您的消息</label>
+                            <textarea id="message" class="form-control" placeholder="请输入您的消息内容"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">发送消息</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="bi bi-geo-alt"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h3>公司地址</h3>
+                            <p>中国上海市浦东新区张江高科技园区</p>
+                            <p>科技大道88号8楼</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="bi bi-envelope"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h3>电子邮箱</h3>
+                            <p>info@example.com</p>
+                            <p>support@example.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="bi bi-telephone"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h3>联系电话</h3>
+                            <p>400-123-4567（客服热线）</p>
+                            <p>021-87654321（办公室）</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="bi bi-clock"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h3>工作时间</h3>
+                            <p>周一至周五: 9:00 - 18:00</p>
+                            <p>周六: 9:00 - 12:00（仅客服）</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h3>社交媒体</h3>
+                            <p>关注我们的社交媒体，获取最新动态</p>
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="bi bi-wechat"></i></a>
+                                <a href="#" class="social-link"><i class="bi bi-chat"></i></a>
+                                <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <p>这里将显示公司地址的地图（实际项目中可嵌入地图API）</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 50px;">常见问题</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        如何报名参加培训课程？
+                        <i class="bi bi-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>您可以通过以下几种方式报名我们的培训课程：</p>
+                        <ol>
+                            <li>在我们的网站上选择您感兴趣的课程，点击"立即报名"按钮。</li>
+                            <li>拨打我们的客服热线400-123-4567，由客服人员协助您完成报名。</li>
+                            <li>发送邮件至info@example.com，注明您想参加的课程名称和时间。</li>
+                            <li>直接前往我们的办公地点进行现场报名。</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        培训课程是否提供退款服务？
+                        <i class="bi bi-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>我们的退款政策如下：</p>
+                        <ul>
+                            <li>课程开始前7天以上申请退款，可获得全额退款。</li>
+                            <li>课程开始前3-7天申请退款，可获得80%退款。</li>
+                            <li>课程开始前3天内申请退款，可获得50%退款。</li>
+                            <li>课程开始后，原则上不予退款。特殊情况可与客服联系协商解决。</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        如何获取工具产品的技术支持？
+                        <i class="bi bi-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>购买我们的工具产品后，您可以通过以下方式获取技术支持：</p>
+                        <ul>
+                            <li>发送邮件至support@example.com，描述您遇到的问题。</li>
+                            <li>拨打技术支持热线400-123-4567转2。</li>
+                            <li>在我们的官方论坛上发帖咨询。</li>
+                            <li>企业版客户可联系您的专属客户经理。</li>
+                        </ul>
+                        <p>我们的技术支持团队会在24小时内回复您的问题。</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        是否提供企业定制培训服务？
+                        <i class="bi bi-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>是的，我们提供企业定制培训服务。我们会根据企业的具体需求和行业特点，量身定制培训内容和方案。企业定制培训的优势包括：</p>
+                        <ul>
+                            <li>针对企业实际业务场景的定制化内容</li>
+                            <li>灵活的培训时间和地点安排</li>
+                            <li>可容纳多名员工同时参训，提高培训效率</li>
+                            <li>培训后的跟踪服务和技术支持</li>
+                        </ul>
+                        <p>如需了解更多信息或预约企业培训，请联系我们的商务团队。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="training.html">培训课程</a></li>
+                        <li><a href="tools.html">工具产品</a></li>
+                        <li><a href="books.html">图书资源</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>资源</h4>
+                    <ul>
+                        <li><a href="articles.html">技术文章</a></li>
+                        <li><a href="#forum">交流论坛</a></li>
+                        <li><a href="#newsletter">订阅通讯</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#about">公司介绍</a></li>
+                        <li><a href="contact.html">联系方式</a></li>
+                        <li><a href="#privacy">隐私政策</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col contact-info">
+                    <h4>联系我们</h4>
+                    <p><i class="bi bi-envelope"></i> info@example.com</p>
+                    <p><i class="bi bi-geo-alt"></i> 中国上海市</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="bi bi-wechat"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-chat"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 数据分析培训中心. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // FAQ手风琴效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const toggle = this.querySelector('.faq-toggle');
+                    
+                    // 切换当前FAQ项的状态
+                    answer.classList.toggle('active');
+                    toggle.classList.toggle('active');
+                    
+                    // 关闭其他打开的FAQ项（可选）
+                    faqQuestions.forEach(q => {
+                        if (q !== question) {
+                            q.nextElementSibling.classList.remove('active');
+                            q.querySelector('.faq-toggle').classList.remove('active');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

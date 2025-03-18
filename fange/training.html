@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>培训课程 - 数据分析培训中心</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- 添加一个简单的图标字体库 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        /* 培训课程页面特定样式 */
+        .page-header {
+            background: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .course-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .course-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .course-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .course-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        
+        .course-content p {
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+        }
+        
+        .course-meta span {
+            display: flex;
+            align-items: center;
+        }
+        
+        .course-meta i {
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+        
+        .course-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .filter-tab {
+            padding: 10px 20px;
+            margin: 0 5px;
+            background-color: var(--light-gray);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-tab.active, .filter-tab:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        @media (max-width: 1024px) {
+            .course-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .course-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 50px auto 0;
+            }
+            
+            .filter-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .filter-tab {
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="logo">
+                <!-- Logo占位符 -->
+                <h1>数据培训</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="training.html" class="active">培训课程</a></li>
+                <li><a href="tools.html">工具产品</a></li>
+                <li><a href="books.html">图书资源</a></li>
+                <li><a href="articles.html">技术文章</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+            </ul>
+            <div class="mobile-menu-btn">
+                <i class="bi bi-list"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面头部 -->
+    <header class="page-header">
+        <div class="container">
+            <h1>培训课程</h1>
+            <p>提升您的数据分析技能，掌握业界领先工具</p>
+        </div>
+    </header>
+
+    <!-- 课程内容 -->
+    <section class="courses-section">
+        <div class="container">
+            <div class="filter-tabs">
+                <div class="filter-tab active">全部课程</div>
+                <div class="filter-tab">Excel进阶</div>
+                <div class="filter-tab">Power BI</div>
+                <div class="filter-tab">数据建模</div>
+                <div class="filter-tab">VBA编程</div>
+            </div>
+            
+            <div class="course-grid">
+                <div class="course-card">
+                    <div class="course-image">
+                        <div class="placeholder-img" style="background-color: #e6f0ff;">
+                            <i class="bi bi-file-earmark-excel"></i>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Excel数据分析基础到进阶</h3>
+                        <p>从基础函数到高级数据分析，全面掌握Excel在数据处理中的应用，提升工作效率。</p>
+                        <div class="course-meta">
+                            <span><i class="bi bi-clock"></i> 24小时</span>
+                            <span><i class="bi bi-person"></i> 初级到中级</span>
+                        </div>
+                        <div class="course-price">¥1,980</div>
+                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">立即报名</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-image">
+                        <div class="placeholder-img" style="background-color: #e6fff0;">
+                            <i class="bi bi-bar-chart"></i>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Power BI数据可视化</h3>
+                        <p>学习使用Power BI创建专业的数据仪表板和报表，将复杂数据转化为直观的可视化图表。</p>
+                        <div class="course-meta">
+                            <span><i class="bi bi-clock"></i> 18小时</span>
+                            <span><i class="bi bi-person"></i> 中级</span>
+                        </div>
+                        <div class="course-price">¥2,280</div>
+                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">立即报名</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-image">
+                        <div class="placeholder-img" style="background-color: #fff0e6;">
+                            <i class="bi bi-table"></i>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Power Query数据处理与转换</h3>
+                        <p>掌握Power Query进行数据清洗、转换和合并的技能，自动化数据准备流程。</p>
+                        <div class="course-meta">
+                            <span><i class="bi bi-clock"></i> 16小时</span>
+                            <span><i class="bi bi-person"></i> 中级到高级</span>
+                        </div>
+                        <div class="course-price">¥2,180</div>
+                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">立即报名</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-image">
+                        <div class="placeholder-img" style="background-color: #f0e6ff;">
+                            <i class="bi bi-diagram-3"></i>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3>数据建模与DAX公式</h3>
+                        <p>学习创建高效的数据模型和编写复杂的DAX公式，构建强大的商业智能解决方案。</p>
+                        <div class="course-meta">
+                            <span><i class="bi bi-clock"></i> 20小时</span>
+                            <span><i class="bi bi-person"></i> 高级</span>
+                        </div>
+                        <div class="course-price">¥2,580</div>
+                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">立即报名</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-image">
+                        <div class="placeholder-img" style="background-color: #e6f7ff;">
+                            <i class="bi bi-code-square"></i>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3>VBA编程与Excel自动化</h3>
+                        <p>从零开始学习VBA编程，实现Excel工作流程自动化，大幅提高工作效率。</p>
+                        <div class="course-meta">
+                            <span><i class="bi bi-clock"></i> 24小时</span>
+                            <span><i class="bi bi-person"></i> 初级到高级</span>
+                        </div>
+                        <div class="course-price">¥2,380</div>
+                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">立即报名</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-image">
+                        <div class="placeholder-img" style="background-color: #ffe6e6;">
+                            <i class="bi bi-pie-chart"></i>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3>财务报表与数据分析</h3>
+                        <p>专为财务人员设计的课程，学习如何使用Excel和Power BI创建专业财务报表和分析。</p>
+                        <div class="course-meta">
+                            <span><i class="bi bi-clock"></i> 18小时</span>
+                            <span><i class="bi bi-person"></i> 中级</span>
+                        </div>
+                        <div class="course-price">¥2,180</div>
+                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">立即报名</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section class="faq-section" style="background-color: var(--light-gray);">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 50px;">常见问题</h2>
+            
+            <div class="faq-container" style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item" style="margin-bottom: 30px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 15px;">课程是线上还是线下进行？</h3>
+                    <p>我们同时提供线上和线下课程。线上课程通过专业的在线教学平台进行，您可以随时随地学习；线下课程在我们的培训中心进行，提供面对面的指导和实践。</p>
+                </div>
+                
+                <div class="faq-item" style="margin-bottom: 30px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 15px;">课程包含哪些学习资料？</h3>
+                    <p>所有课程都包含详细的课程讲义、练习文件、项目案例和录制视频。完成课程后，您将获得终身访问这些资料的权限。</p>
+                </div>
+                
+                <div class="faq-item" style="margin-bottom: 30px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 15px;">是否提供企业定制培训？</h3>
+                    <p>是的，我们提供企业定制培训服务。我们会根据企业的具体需求和行业特点，量身定制培训内容和方案。请联系我们获取更多信息。</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 15px;">完成课程后是否有证书？</h3>
+                    <p>是的，成功完成课程并通过考核后，您将获得我们颁发的结业证书，证明您已掌握相关技能。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="training.html">培训课程</a></li>
+                        <li><a href="tools.html">工具产品</a></li>
+                        <li><a href="books.html">图书资源</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>资源</h4>
+                    <ul>
+                        <li><a href="articles.html">技术文章</a></li>
+                        <li><a href="#forum">交流论坛</a></li>
+                        <li><a href="#newsletter">订阅通讯</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#about">公司介绍</a></li>
+                        <li><a href="contact.html">联系方式</a></li>
+                        <li><a href="#privacy">隐私政策</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col contact-info">
+                    <h4>联系我们</h4>
+                    <p><i class="bi bi-envelope"></i> info@example.com</p>
+                    <p><i class="bi bi-geo-alt"></i> 中国上海市</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="bi bi-wechat"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-chat"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 数据分析培训中心. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // 课程筛选功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 移除所有active类
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    // 添加active类到当前点击的tab
+                    this.classList.add('active');
+                    
+                    // 这里可以添加实际的筛选逻辑
+                    // 简单示例：显示一个提示
+                    alert('已选择: ' + this.textContent + '\n(实际项目中这里会实现筛选功能)');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

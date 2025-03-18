@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工具产品 - 数据分析培训中心</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- 添加一个简单的图标字体库 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        /* 工具产品页面特定样式 */
+        .page-header {
+            background: linear-gradient(135deg, #00cc66 0%, #009933 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .tool-hero {
+            display: flex;
+            align-items: center;
+            margin: 80px 0;
+        }
+        
+        .tool-hero-content {
+            flex: 1;
+            padding-right: 50px;
+        }
+        
+        .tool-hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .tool-hero-image img {
+            max-width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .tool-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .tool-feature {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .tool-feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .tool-feature i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .pricing-plans {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .pricing-plan {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .pricing-plan:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .pricing-plan.popular {
+            border: 2px solid var(--primary-color);
+            transform: scale(1.05);
+        }
+        
+        .pricing-plan.popular:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            border-bottom-left-radius: var(--radius);
+        }
+        
+        .pricing-header {
+            background-color: var(--light-gray);
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .pricing-name {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .pricing-period {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        .pricing-features {
+            padding: 30px;
+        }
+        
+        .pricing-features ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features i {
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+        
+        .pricing-footer {
+            padding: 20px 30px 30px;
+            text-align: center;
+        }
+        
+        .testimonial-section {
+            background-color: var(--light-gray);
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--dark-gray);
+        }
+        
+        @media (max-width: 1024px) {
+            .tool-features, .pricing-plans {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .pricing-plan.popular {
+                grid-column: span 2;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .tool-hero {
+                flex-direction: column;
+            }
+            
+            .tool-hero-content {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .tool-features, .pricing-plans {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-plan.popular {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="logo">
+                <!-- Logo占位符 -->
+                <h1>数据培训</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="training.html">培训课程</a></li>
+                <li><a href="tools.html" class="active">工具产品</a></li>
+                <li><a href="books.html">图书资源</a></li>
+                <li><a href="articles.html">技术文章</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+            </ul>
+            <div class="mobile-menu-btn">
+                <i class="bi bi-list"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面头部 -->
+    <header class="page-header">
+        <div class="container">
+            <h1>数据分析工具</h1>
+            <p>提升您的数据处理效率，构建更好的数据模型</p>
+        </div>
+    </header>
+
+    <!-- 主要工具介绍 -->
+    <section class="tool-main">
+        <div class="container">
+            <div class="tool-hero">
+                <div class="tool-hero-content">
+                    <h2>数据猎手 - 专业Excel数据分析插件</h2>
+                    <p>数据猎手是一款功能强大的Excel插件，专为数据分析师和财务专业人士设计。它可以帮助您更快地构建数据模型，自动化数据清洗流程，并遵循数据建模最佳实践。</p>
+                    <p>无论您是需要处理大量数据，还是创建复杂的财务报表，数据猎手都能显著提高您的工作效率，减少错误，让您专注于数据分析而非繁琐的数据处理。</p>
+                    <div style="margin-top: 30px;">
+                        <a href="#pricing" class="btn btn-primary">查看价格</a>
+                        <a href="#" class="btn btn-secondary">免费试用</a>
+                    </div>
+                </div>
+                <div class="tool-hero-image">
+                    <div class="placeholder-img" style="width: 100%; height: 400px; background-color: #e6fff0;">
+                        <i class="bi bi-tools" style="font-size: 6rem;"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-title">
+                <h2>主要功能</h2>
+                <p>数据猎手提供了一系列强大的功能，帮助您更高效地处理和分析数据</p>
+            </div>
+            
+            <div class="tool-features">
+                <div class="tool-feature">
+                    <i class="bi bi-magic"></i>
+                    <h3>智能数据清洗</h3>
+                    <p>自动检测并修复数据中的错误、重复和异常值，确保数据质量。</p>
+                </div>
+                
+                <div class="tool-feature">
+                    <i class="bi bi-diagram-3"></i>
+                    <h3>高级数据建模</h3>
+                    <p>轻松创建复杂的数据模型，建立表间关系，优化模型性能。</p>
+                </div>
+                
+                <div class="tool-feature">
+                    <i class="bi bi-lightning"></i>
+                    <h3>公式加速器</h3>
+                    <p>提供常用公式模板，快速生成复杂公式，减少手动输入错误。</p>
+                </div>
+                
+                <div class="tool-feature">
+                    <i class="bi bi-calendar-check"></i>
+                    <h3>日期智能处理</h3>
+                    <p>自动创建日期表，支持各种日期计算和时间智能分析。</p>
+                </div>
+                
+                <div class="tool-feature">
+                    <i class="bi bi-graph-up"></i>
+                    <h3>一键生成报表</h3>
+                    <p>根据数据模型自动生成专业的财务和业务报表，节省时间。</p>
+                </div>
+                
+                <div class="tool-feature">
+                    <i class="bi bi-shield-check"></i>
+                    <h3>模型健康检查</h3>
+                    <p>检测数据模型中的潜在问题，提供优化建议，确保模型质量。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 价格方案 -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>价格方案</h2>
+                <p>选择最适合您需求的方案，开始提升数据分析效率</p>
+            </div>
+            
+            <div class="pricing-plans">
+                <div class="pricing-plan">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">个人版</h3>
+                        <div class="pricing-price">¥299</div>
+                        <div class="pricing-period">一次性购买 / 终身使用</div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="bi bi-check-circle"></i> 智能数据清洗</li>
+                            <li><i class="bi bi-check-circle"></i> 基础数据建模</li>
+                            <li><i class="bi bi-check-circle"></i> 公式加速器</li>
+                            <li><i class="bi bi-check-circle"></i> 单用户授权</li>
+                            <li><i class="bi bi-x-circle"></i> 高级报表生成</li>
+                            <li><i class="bi bi-x-circle"></i> 模型健康检查</li>
+                            <li><i class="bi bi-x-circle"></i> 优先技术支持</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="#" class="btn btn-secondary" style="width: 100%;">立即购买</a>
+                    </div>
+                </div>
+                
+                <div class="pricing-plan popular">
+                    <div class="popular-badge">最受欢迎</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">专业版</h3>
+                        <div class="pricing-price">¥599</div>
+                        <div class="pricing-period">一次性购买 / 终身使用</div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="bi bi-check-circle"></i> 智能数据清洗</li>
+                            <li><i class="bi bi-check-circle"></i> 高级数据建模</li>
+                            <li><i class="bi bi-check-circle"></i> 公式加速器</li>
+                            <li><i class="bi bi-check-circle"></i> 日期智能处理</li>
+                            <li><i class="bi bi-check-circle"></i> 高级报表生成</li>
+                            <li><i class="bi bi-check-circle"></i> 模型健康检查</li>
+                            <li><i class="bi bi-check-circle"></i> 单用户授权</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="#" class="btn btn-primary" style="width: 100%;">立即购买</a>
+                    </div>
+                </div>
+                
+                <div class="pricing-plan">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">企业版</h3>
+                        <div class="pricing-price">¥1,999</div>
+                        <div class="pricing-period">起 / 按用户数量定价</div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="bi bi-check-circle"></i> 专业版全部功能</li>
+                            <li><i class="bi bi-check-circle"></i> 多用户授权</li>
+                            <li><i class="bi bi-check-circle"></i> 团队协作功能</li>
+                            <li><i class="bi bi-check-circle"></i> 自定义功能开发</li>
+                            <li><i class="bi bi-check-circle"></i> 优先技术支持</li>
+                            <li><i class="bi bi-check-circle"></i> 现场培训服务</li>
+                            <li><i class="bi bi-check-circle"></i> 专属客户经理</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="#" class="btn btn-secondary" style="width: 100%;">联系我们</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 用户评价 -->
+    <section class="testimonial-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>用户评价</h2>
+                <p>听听我们的用户怎么说</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-container">
+                    <div class="testimonial active">
+                        <div class="testimonial-content">
+                            <p>"数据猎手彻底改变了我处理数据的方式。以前需要几个小时的工作，现在只需几分钟就能完成。它的智能数据清洗功能为我节省了大量时间，公式加速器也让我避免了很多手动输入错误。"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="bi bi-person-circle"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>陈先生</h4>
+                                <p>财务分析师 | 某科技公司</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"作为一名数据分析师，我每天都要处理大量数据。数据猎手的高级数据建模功能让我能够轻松创建复杂的数据模型，大大提高了工作效率。模型健康检查功能也帮助我发现并修复了许多潜在问题。"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="bi bi-person-circle"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>王女士</h4>
+                                <p>数据分析师 | 某咨询公司</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"我们公司采购了数据猎手企业版，为整个财务团队配备。这个工具极大地提高了我们的工作效率，特别是在月末和季末报表制作时。团队协作功能让我们能够更好地共享和管理数据模型，非常实用。"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="bi bi-person-circle"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>李先生</h4>
+                                <p>财务总监 | 某制造企业</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slider-controls">
+                    <button class="prev-btn"><i class="bi bi-chevron-left"></i></button>
+                    <button class="next-btn"><i class="bi bi-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>常见问题</h2>
+                <p>关于数据猎手的常见问题解答</p>
+            </div>
+            
+            <div class="faq-container" style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item" style="margin-bottom: 30px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 15px;">数据猎手支持哪些Excel版本？</h3>
+                    <p>数据猎手支持Excel 2016及以上版本，包括Microsoft 365。目前不支持Excel Online和Mac版Excel。</p>
+                </div>
+                
+                <div class="faq-item" style="margin-bottom: 30px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 15px;">购买后是否提供技术支持？</h3>
+                    <p>是的，所有版本都提供基础技术支持。专业版和企业版用户可享受优先技术支持服务，企业版还包含现场培训和专属客户经理服务。</p>
+                </div>
+                
+                <div class="faq-item" style="margin-bottom: 30px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 15px;">是否提供免费试用？</h3>
+                    <p>是的，我们提供14天的免费试用，您可以体验所有专业版功能。试用期结束后，您可以选择购买或继续使用有限的免费功能。</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 15px;">如何获取软件更新？</h3>
+                    <p>一次性购买包含一年的免费更新。一年后，您可以选择支付升级费用获取新版本，或继续使用当前版本而不升级。企业版客户可享受更长的免费更新期。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 行动召唤 -->
+    <section class="cta-section" style="background-color: var(--primary-color); color: white; padding: 80px 0; text-align: center;">
+        <div class="container">
+            <h2 style="color: white; margin-bottom: 20px;">准备好提升您的数据分析效率了吗？</h2>
+            <p style="max-width: 700px; margin: 0 auto 30px;">立即开始使用数据猎手，体验更高效的数据处理和分析。</p>
+            <div>
+                <a href="#" class="btn" style="background-color: white; color: var(--primary-color); margin-right: 15px;">免费试用</a>
+                <a href="#pricing" class="btn" style="background-color: transparent; color: white; border: 2px solid white;">查看价格</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="training.html">培训课程</a></li>
+                        <li><a href="tools.html">工具产品</a></li>
+                        <li><a href="books.html">图书资源</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>资源</h4>
+                    <ul>
+                        <li><a href="articles.html">技术文章</a></li>
+                        <li><a href="#forum">交流论坛</a></li>
+                        <li><a href="#newsletter">订阅通讯</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#about">公司介绍</a></li>
+                        <li><a href="contact.html">联系方式</a></li>
+                        <li><a href="#privacy">隐私政策</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col contact-info">
+                    <h4>联系我们</h4>
+                    <p><i class="bi bi-envelope"></i> info@example.com</p>
+                    <p><i class="bi bi-geo-alt"></i> 中国上海市</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="bi bi-wechat"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-chat"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 数据分析培训中心. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
