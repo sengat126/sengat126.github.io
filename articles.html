@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技术文章 - 方木工作室</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- 添加一个简单的图标字体库 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        /* 技术文章页面特定样式 */
+        .page-header {
+            background: linear-gradient(135deg, #9900cc 0%, #6600cc 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        /*原 margin: 50px 0; 先 margin: 50px 0;*/
+        .articles-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin: 0 0 50px 0;
+        }
+        
+        .article-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .article-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .article-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .placeholder-image {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--light-gray);
+            color: var(--primary-color);
+        }
+        
+        .placeholder-image i {
+            font-size: 4rem;
+        }
+        
+        .article-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .article-meta {
+            display: flex;
+            margin-bottom: 15px;
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+        
+        .article-meta i {
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+        
+        .article-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        
+        .article-excerpt {
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .article-tag {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+        
+        .article-tag:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .sidebar-widget {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            padding: 25px;
+        }
+        
+        .sidebar-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+        
+        .popular-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .popular-post {
+            display: flex;
+            align-items: center;
+        }
+        
+        .popular-post-image {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .popular-post-image .placeholder-image {
+            border-radius: 0;
+        }
+        
+        .popular-post-image .placeholder-image i {
+            font-size: 1.5rem;
+        }
+        
+        .popular-post-content h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        
+        .popular-post-content span {
+            font-size: 0.8rem;
+            color: var(--dark-gray);
+        }
+        
+        .categories-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .categories-list li {
+            margin-bottom: 10px;
+        }
+        
+        .categories-list a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--light-gray);
+            transition: var(--transition);
+        }
+        
+        .categories-list a:hover {
+            padding-left: 5px;
+        }
+        
+        .categories-list span {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tag-cloud a {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+        
+        .tag-cloud a:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        
+        .pagination a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            margin: 0 5px;
+            border-radius: 50%;
+            background-color: var(--white);
+            color: var(--text-color);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .pagination a:hover, .pagination a.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .search-form {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .search-form input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--radius) 0 0 var(--radius);
+            outline: none;
+        }
+        
+        .search-form button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 1024px) {
+            .articles-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .article-image {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="logo">
+                <!-- Logo占位符 -->
+                <h1>方木工作室</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="tools.html">工具产品</a></li>
+                <li><a href="training.html">培训课程</a></li>
+                <li><a href="books.html">图书资源</a></li>
+                <li><a href="articles.html" class="active">技术文章</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+            </ul>
+            <div class="mobile-menu-btn">
+                <i class="bi bi-list"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面头部 -->
+    <header class="page-header">
+        <div class="container">
+            <h1>技术文章</h1>
+            <p>分享数据分析领域的专业知识和实用技巧</p>
+        </div>
+    </header>
+
+    <!-- 文章内容 -->
+    <section class="articles-section">
+        <div class="container">
+            <div class="articles-container">
+                <div class="article-list">
+                    <article class="article-card">
+                        <div class="article-image">
+                            <div class="placeholder-image" style="background-color: #e6f0ff;">
+                                <i class="bi bi-file-earmark-excel"></i>
+                            </div>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span><i class="bi bi-calendar"></i> 2023-10-15</span>
+                                <span><i class="bi bi-person"></i> 张明</span>
+                                <span><i class="bi bi-chat"></i> 24评论</span>
+                            </div>
+                            <h2 class="article-title">Excel数据透视表高级技巧：提升数据分析效率的10个方法</h2>
+                            <p class="article-excerpt">数据透视表是Excel中最强大的数据分析工具之一，但很多用户只使用了其基本功能。本文将介绍10个高级技巧，帮助您充分发挥数据透视表的潜力，大幅提升数据分析效率。从自定义计算字段到多级分组，从条件格式到切片器，这些技巧将改变您使用Excel的方式。</p>
+                            <div class="article-tags">
+                                <a href="#" class="article-tag">Excel</a>
+                                <a href="#" class="article-tag">数据透视表</a>
+                                <a href="#" class="article-tag">数据分析</a>
+                            </div>
+                            <a href="#" class="btn btn-text">阅读全文</a>
+                        </div>
+                    </article>
+                    
+                    <article class="article-card">
+                        <div class="article-image">
+                            <div class="placeholder-image" style="background-color: #e6fff0;">
+                                <i class="bi bi-bar-chart"></i>
+                            </div>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span><i class="bi bi-calendar"></i> 2023-10-08</span>
+                                <span><i class="bi bi-person"></i> 李强</span>
+                                <span><i class="bi bi-chat"></i> 18评论</span>
+                            </div>
+                            <h2 class="article-title">Power BI可视化设计原则：如何创建专业且有洞察力的仪表板</h2>
+                            <p class="article-excerpt">一个好的Power BI仪表板不仅仅是漂亮的图表集合，更是能够传达清晰洞察的分析工具。本文分享了创建专业Power BI仪表板的设计原则和最佳实践，包括色彩选择、布局设计、交互功能和性能优化等方面的技巧。无论您是初学者还是有经验的BI开发者，都能从中获益。</p>
+                            <div class="article-tags">
+                                <a href="#" class="article-tag">Power BI</a>
+                                <a href="#" class="article-tag">数据可视化</a>
+                                <a href="#" class="article-tag">仪表板设计</a>
+                            </div>
+                            <a href="#" class="btn btn-text">阅读全文</a>
+                        </div>
+                    </article>
+                    
+                    <article class="article-card">
+                        <div class="article-image">
+                            <div class="placeholder-image" style="background-color: #fff0e6;">
+                                <i class="bi bi-table"></i>
+                            </div>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span><i class="bi bi-calendar"></i> 2023-09-25</span>
+                                <span><i class="bi bi-person"></i> 刘明</span>
+                                <span><i class="bi bi-chat"></i> 32评论</span>
+                            </div>
+                            <h2 class="article-title">Power Query实战：自动化数据清洗与转换的完整工作流</h2>
+                            <p class="article-excerpt">数据准备通常占据数据分析工作的70%以上时间。Power Query是一个强大的ETL工具，可以大幅减少这一过程所需的时间和精力。本文通过一个实际案例，详细介绍了如何使用Power Query构建完整的数据清洗与转换工作流，实现数据处理的自动化。</p>
+                            <div class="article-tags">
+                                <a href="#" class="article-tag">Power Query</a>
+                                <a href="#" class="article-tag">数据清洗</a>
+                                <a href="#" class="article-tag">ETL</a>
+                            </div>
+                            <a href="#" class="btn btn-text">阅读全文</a>
+                        </div>
+                    </article>
+                    
+                    <article class="article-card">
+                        <div class="article-image">
+                            <div class="placeholder-image" style="background-color: #f0e6ff;">
+                                <i class="bi bi-diagram-3"></i>
+                            </div>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span><i class="bi bi-calendar"></i> 2023-09-12</span>
+                                <span><i class="bi bi-person"></i> 陈志强</span>
+                                <span><i class="bi bi-chat"></i> 15评论</span>
+                            </div>
+                            <h2 class="article-title">数据建模最佳实践：构建高效且可扩展的分析模型</h2>
+                            <p class="article-excerpt">良好的数据模型是成功BI项目的基础。本文分享了数据建模的最佳实践，包括星型架构设计、关系定义、计算列与度量值的使用、性能优化等方面的技巧。通过遵循这些原则，您可以构建出高效、可扩展且易于维护的数据模型。</p>
+                            <div class="article-tags">
+                                <a href="#" class="article-tag">数据建模</a>
+                                <a href="#" class="article-tag">Power Pivot</a>
+                                <a href="#" class="article-tag">星型架构</a>
+                            </div>
+                            <a href="#" class="btn btn-text">阅读全文</a>
+                        </div>
+                    </article>
+                    
+                    <article class="article-card">
+                        <div class="article-image">
+                            <div class="placeholder-image" style="background-color: #e6f7ff;">
+                                <i class="bi bi-code-square"></i>
+                            </div>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span><i class="bi bi-calendar"></i> 2023-08-30</span>
+                                <span><i class="bi bi-person"></i> 张学友</span>
+                                <span><i class="bi bi-chat"></i> 27评论</span>
+                            </div>
+                            <h2 class="article-title">VBA入门指南：Excel自动化的第一步</h2>
+                            <p class="article-excerpt">VBA是Excel中强大的编程语言，可以帮助您自动化重复性任务，提高工作效率。本文面向零基础读者，介绍了VBA的基本概念、开发环境设置、常用语法和简单实例。通过本文，您将能够编写简单的VBA宏，开始Excel自动化之旅。</p>
+                            <div class="article-tags">
+                                <a href="#" class="article-tag">VBA</a>
+                                <a href="#" class="article-tag">Excel</a>
+                                <a href="#" class="article-tag">自动化</a>
+                            </div>
+                            <a href="#" class="btn btn-text">阅读全文</a>
+                        </div>
+                    </article>
+                    
+                    <div class="pagination">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#"><i class="bi bi-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="sidebar">
+                    <div class="sidebar-widget">
+                        <form class="search-form">
+                            <input type="text" placeholder="搜索文章...">
+                            <button type="submit"><i class="bi bi-search"></i></button>
+                        </form>
+                    </div>
+                    
+                    <div class="sidebar-widget">
+                        <h3 class="sidebar-title">热门文章</h3>
+                        <div class="popular-posts">
+                            <div class="popular-post">
+                                <div class="popular-post-image">
+                                    <div class="placeholder-image" style="background-color: #e6f0ff;">
+                                        <i class="bi bi-file-earmark-excel"></i>
+                                    </div>
+                                </div>
+                                <div class="popular-post-content">
+                                    <h4><a href="#">Excel数据透视表高级技巧</a></h4>
+                                    <span>2023-10-15</span>
+                                </div>
+                            </div>
+                            
+                            <div class="popular-post">
+                                <div class="popular-post-image">
+                                    <div class="placeholder-image" style="background-color: #e6fff0;">
+                                        <i class="bi bi-bar-chart"></i>
+                                    </div>
+                                </div>
+                                <div class="popular-post-content">
+                                    <h4><a href="#">Power BI可视化设计原则</a></h4>
+                                    <span>2023-10-08</span>
+                                </div>
+                            </div>
+                            
+                            <div class="popular-post">
+                                <div class="popular-post-image">
+                                    <div class="placeholder-image" style="background-color: #fff0e6;">
+                                        <i class="bi bi-table"></i>
+                                    </div>
+                                </div>
+                                <div class="popular-post-content">
+                                    <h4><a href="#">Power Query实战</a></h4>
+                                    <span>2023-09-25</span>
+                                </div>
+                            </div>
+                            
+                            <div class="popular-post">
+                                <div class="popular-post-image">
+                                    <div class="placeholder-image" style="background-color: #f0e6ff;">
+                                        <i class="bi bi-diagram-3"></i>
+                                    </div>
+                                </div>
+                                <div class="popular-post-content">
+                                    <h4><a href="#">数据建模最佳实践</a></h4>
+                                    <span>2023-09-12</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-widget">
+                        <h3 class="sidebar-title">文章分类</h3>
+                        <ul class="categories-list">
+                            <li><a href="#">Excel技巧 <span>24</span></a></li>
+                            <li><a href="#">Power BI <span>18</span></a></li>
+                            <li><a href="#">Power Query <span>12</span></a></li>
+                            <li><a href="#">数据建模 <span>15</span></a></li>
+                            <li><a href="#">VBA编程 <span>9</span></a></li>
+                            <li><a href="#">财务分析 <span>11</span></a></li>
+                            <li><a href="#">数据可视化 <span>16</span></a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sidebar-widget">
+                        <h3 class="sidebar-title">标签云</h3>
+                        <div class="tag-cloud">
+                            <a href="#">Excel</a>
+                            <a href="#">Power BI</a>
+                            <a href="#">数据透视表</a>
+                            <a href="#">数据分析</a>
+                            <a href="#">可视化</a>
+                            <a href="#">DAX</a>
+                            <a href="#">Power Query</a>
+                            <a href="#">ETL</a>
+                            <a href="#">数据建模</a>
+                            <a href="#">VBA</a>
+                            <a href="#">自动化</a>
+                            <a href="#">财务报表</a>
+                            <a href="#">仪表板</a>
+                            <a href="#">数据清洗</a>
+                            <a href="#">函数</a>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-widget">
+                        <h3 class="sidebar-title">订阅更新</h3>
+                        <p>订阅我们的更新，获取最新文章和教程。</p>
+                        <form style="display: flex; margin-top: 15px;">
+                            <input type="email" placeholder="您的邮箱地址" style="flex: 1; padding: 10px; border: 1px solid var(--light-gray); border-radius: var(--radius) 0 0 var(--radius); outline: none;">
+                            <button type="submit" style="background-color: var(--primary-color); color: var(--white); border: none; padding: 0 15px; border-radius: 0 var(--radius) var(--radius) 0; cursor: pointer;"><i class="bi bi-envelope"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="training.html">培训课程</a></li>
+                        <li><a href="tools.html">工具产品</a></li>
+                        <li><a href="books.html">图书资源</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>资源</h4>
+                    <ul>
+                        <li><a href="articles.html">技术文章</a></li>
+                        <li><a href="#forum">交流论坛</a></li>
+                        <li><a href="#newsletter">订阅通讯</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#about">公司介绍</a></li>
+                        <li><a href="contact.html">联系方式</a></li>
+                        <li><a href="#privacy">隐私政策</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col contact-info">
+                    <h4>联系我们</h4>
+                    <p><i class="bi bi-envelope"></i> info@example.com</p>
+                    <p><i class="bi bi-geo-alt"></i> 中国上海市</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="bi bi-wechat"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-chat"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 数据分析培训中心. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

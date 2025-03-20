@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工具产品 - 方木工作室</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- 添加一个简单的图标字体库 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        /* 工具产品页面特定样式 */
+        .page-header {
+            background: linear-gradient(135deg, #00cc66 0%, #009933 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        /*margin 80px 0  改成上面0px*/
+        .tool-hero {
+            display: flex;
+            align-items: center;
+            margin: 0 0 80px 0 ;
+        }
+        
+        .tool-hero-content {
+            flex: 1;
+            padding-right: 50px;
+        }
+        
+        .tool-hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .tool-hero-image img {
+            max-width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .tool-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .tool-feature {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .tool-feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .tool-feature i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .pricing-plans {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .pricing-plan {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .pricing-plan:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .pricing-plan.popular {
+            border: 2px solid var(--primary-color);
+            transform: scale(1.05);
+        }
+        
+        .pricing-plan.popular:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            border-bottom-left-radius: var(--radius);
+        }
+        
+        .pricing-header {
+            background-color: var(--light-gray);
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .pricing-name {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .pricing-period {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        .pricing-features {
+            padding: 30px;
+        }
+        
+        .pricing-features ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features i {
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+        
+        .pricing-footer {
+            padding: 20px 30px 30px;
+            text-align: center;
+        }
+        
+        .testimonial-section {
+            background-color: var(--light-gray);
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--dark-gray);
+        }
+        
+        @media (max-width: 1024px) {
+            .tool-features, .pricing-plans {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .pricing-plan.popular {
+                grid-column: span 2;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .tool-hero {
+                flex-direction: column;
+            }
+            
+            .tool-hero-content {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .tool-features, .pricing-plans {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-plan.popular {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="logo">
+                <!-- Logo占位符 -->
+                <h1>方木工作室</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="tools.html" class="active">工具产品</a></li>
+                <li><a href="training.html">培训课程</a></li>
+                <li><a href="books.html">图书资源</a></li>
+                <li><a href="articles.html">技术文章</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+            </ul>
+            <div class="mobile-menu-btn">
+                <i class="bi bi-list"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面头部 -->
+    <header class="page-header">
+        <div class="container">
+            <h1>方木助手-office操作辅助工具</h1>
+            <p>提升您的数据处理效率，构建更好的数据应用体验</p>
+        </div>
+    </header>
+
+    <!-- 主要工具介绍 -->
+    <section class="tool-main">
+        <div class="container">
+            <div class="tool-hero">
+                <div class="tool-hero-content">
+                    <h2>方木格子 - 专业Excel工具插件</h2>
+                    <p>方木格子是一款功能强大的Excel插件，专为数据分析师和商品专业人士设计。它可以帮助您更愉快地处理日常Excel图片操作和方面使用。</p>
+   <p>无论您是需要编制商品报表，还是创建大量Excel复杂应用，方木格子都能显著提高您的工作效率，减少错误，让您专注于数据分析而非繁琐的数据处理。</p>
+                    <div style="margin-top: 30px;">
+                        <a href="#" class="btn btn-secondary">免费试用</a>
+                        <a href="#pricing" class="btn btn-primary">使用说明</a>
+                    </div>
+                </div>
+                <div class="tool-hero-image">
+                    <div class="placeholder-img" style="width: 100%; height: 400px; background-color: #e6fff0;">
+                        <i class="bi bi-tools" style="font-size: 6rem;"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-title">
+                <h2>主要功能</h2>
+                <p>方木助手提供了一系列强大的功能，帮助您更高效地处理和分析数据</p>
+            </div>
+            
+            <div class="tool-features">
+                <div class="tool-feature">
+                    <i class="bi bi-magic"></i>
+                    <h3>智能图片处理</h3>
+                    <p>日常的Excel和图片应用相关。</p>
+                </div>
+                
+                <div class="tool-feature">
+                    <i class="bi bi-diagram-3"></i>
+                    <h3>高级数据建模--开发中</h3>
+                    <p>轻松创建复杂的数据模型，建立表间关系，优化模型性能。</p>
+                </div>
+                
+                <div class="tool-feature">
+                    <i class="bi bi-lightning"></i>
+                    <h3>公式加速器--开发中</h3>
+                    <p>提供常用公式模板，快速生成复杂公式，减少手动输入错误。</p>
+                </div>
+                
+                <div class="tool-feature">
+                    <i class="bi bi-calendar-check"></i>
+                    <h3>日期智能处理--开发中</h3>
+                    <p>自动创建日期表，支持各种日期计算和时间智能分析。</p>
+                </div>
+                
+                <div class="tool-feature">
+                    <i class="bi bi-graph-up"></i>
+                    <h3>一键生成报表--开发中</h3>
+                    <p>根据数据模型自动生成专业的财务和业务报表，节省时间。</p>
+                </div>
+                
+                <div class="tool-feature">
+                    <i class="bi bi-shield-check"></i>
+                    <h3>模型健康检查</h3>
+                    <p>检测数据模型中的潜在问题，提供优化建议，确保模型质量。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 价格方案 -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>使用说明</h2>
+                <p>当前版本免费试用，欢迎大家提出宝贵意见，力争开发出一款有用的工具产品。</p>
+                <p>操作视频的gif文件</p>
+                
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>常见问题</h2>
+                <p>关于方木助手的常见问题解答</p>
+            </div>
+            
+            <div class="faq-container" style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item" style="margin-bottom: 30px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 15px;">方木助手支持哪些Excel版本？</h3>
+                    <p>方木助手支持Excel 2016及以上版本，包括Microsoft 365。目前不支持Excel Online和Mac版Excel。</p>
+                </div>
+                
+                <div class="faq-item" style="margin-bottom: 30px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 15px;">购买后是否提供技术支持？</h3>
+                    <p>分免费版、专业版和企业版，免费版免费使用，通过官网等渠道提供有限技术支持，专业版和企业版需要购买，并提供技术支持，企业版还包含现场培训和专属客户经理服务。</p>
+                </div>
+                
+                <div class="faq-item" style="margin-bottom: 30px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 15px;">是否提供免费试用？</h3>
+                    <p>是的，当前版本我们提供免费试用，您可以体验所有专业版功能。如需技术支持，您可以选择购买专业版和企业版。</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 15px;">如何获取软件更新？</h3>
+                    <p>当前所有版本都支持免费升级。企业版客户可享受定制问题修复。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 行动召唤 -->
+    <section class="cta-section" style="background-color: var(--primary-color); color: white; padding: 80px 0; text-align: center;">
+        <div class="container">
+            <h2 style="color: white; margin-bottom: 20px;">准备好提升您的数据分析效率了吗？</h2>
+            <p style="max-width: 700px; margin: 0 auto 30px;">立即开始使用方木工具，体验更高效的数据处理和分析。</p>
+            <div>
+                <a href="#" class="btn" style="background-color: white; color: var(--primary-color); margin-right: 15px;">免费试用</a>
+                <a href="#pricing" class="btn" style="background-color: transparent; color: white; border: 2px solid white;">使用说明</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="training.html">培训课程</a></li>
+                        <li><a href="tools.html">工具产品</a></li>
+                        <li><a href="books.html">图书资源</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>资源</h4>
+                    <ul>
+                        <li><a href="articles.html">技术文章</a></li>
+                        <li><a href="#forum">交流论坛</a></li>
+                        <li><a href="#newsletter">订阅通讯</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#about">公司介绍</a></li>
+                        <li><a href="contact.html">联系方式</a></li>
+                        <li><a href="#privacy">隐私政策</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col contact-info">
+                    <h4>联系我们</h4>
+                    <p><i class="bi bi-envelope"></i> info@example.com</p>
+                    <p><i class="bi bi-geo-alt"></i> 中国上海市</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="bi bi-wechat"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-chat"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 方木工作室. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

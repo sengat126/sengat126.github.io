@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书资源 - 方木工作室</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- 添加一个简单的图标字体库 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        /* 图书资源页面特定样式 */
+        .page-header {
+            background: linear-gradient(135deg, #ff9900 0%, #ff6600 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .book-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .book-cover {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .placeholder-cover {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--light-gray);
+            color: var(--primary-color);
+        }
+        
+        .placeholder-cover i {
+            font-size: 5rem;
+        }
+        
+        .book-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .book-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .book-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        .book-author {
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .book-description {
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .book-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+        }
+        
+        .book-meta span {
+            display: flex;
+            align-items: center;
+        }
+        
+        .book-meta i {
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+        
+        .book-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .filter-tab {
+            padding: 10px 20px;
+            margin: 0 5px;
+            background-color: var(--light-gray);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-tab.active, .filter-tab:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .featured-book {
+            display: flex;
+            align-items: center;
+            background-color: var(--light-gray);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-bottom: 80px;
+        }
+        
+        .featured-book-cover {
+            flex: 1;
+            max-width: 300px;
+            padding: 30px;
+        }
+        
+        .featured-book-cover .placeholder-cover {
+            height: 400px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .featured-book-content {
+            flex: 2;
+            padding: 40px;
+        }
+        
+        .featured-label {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .book-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .featured-book {
+                flex-direction: column;
+            }
+            
+            .featured-book-cover {
+                max-width: 100%;
+                padding: 30px 30px 0;
+            }
+            
+            .featured-book-cover .placeholder-cover {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .book-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 50px auto;
+            }
+            
+            .filter-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .filter-tab {
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="logo">
+                <!-- Logo占位符 -->
+                <h1>方木工作室</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="tools.html">工具产品</a></li>
+                <li><a href="training.html">培训课程</a></li>
+                <li><a href="books.html" class="active">图书资源</a></li>
+                <li><a href="articles.html">技术文章</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+            </ul>
+            <div class="mobile-menu-btn">
+                <i class="bi bi-list"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面头部 -->
+    <header class="page-header">
+        <div class="container">
+            <h1>图书资源</h1>
+            <p>深入学习数据分析技能，提升专业知识</p>
+        </div>
+    </header>
+
+    <!-- 精选图书 -->
+    <section class="featured-section">
+        <div class="container">
+            <div class="featured-book">
+                <div class="featured-book-cover">
+                    <div class="placeholder-cover" style="background-color: #fff0e6;">
+                        <i class="bi bi-book"></i>
+                    </div>
+                </div>
+                <div class="featured-book-content">
+                    <span class="featured-label">新书推荐</span>
+                    <h2>Excel数据分析实战指南：从入门到精通</h2>
+                    <p class="book-author">作者：张明 / 李华</p>
+                    <p class="book-description">这本书是Excel数据分析领域的权威指南，涵盖从基础到高级的所有技能。无论您是初学者还是有经验的分析师，都能从中获益。书中包含大量实际案例和练习，帮助您将理论知识应用到实际工作中。</p>
+                    <p class="book-description">主要内容包括：Excel基础功能、数据清洗与处理、数据透视表高级应用、Power Query与Power Pivot、数据可视化技巧、财务分析模型构建等。每章都配有详细的步骤说明和实例文件，让您轻松掌握各种技能。</p>
+                    <div class="book-meta" style="margin-top: 20px;">
+                        <span><i class="bi bi-calendar"></i> 2023年出版</span>
+                        <span><i class="bi bi-book"></i> 450页</span>
+                        <span><i class="bi bi-star-fill"></i> 4.9分 (128评价)</span>
+                    </div>
+                    <div class="book-price" style="font-size: 1.5rem;">¥128.00</div>
+                    <div>
+                        <a href="#" class="btn btn-primary">立即购买</a>
+                        <a href="#" class="btn btn-secondary">查看样章</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 图书列表 -->
+    <section class="books-section">
+        <div class="container">
+            <div class="filter-tabs">
+                <div class="filter-tab active">全部图书</div>
+                <div class="filter-tab">Excel技巧</div>
+                <div class="filter-tab">Power BI</div>
+                <div class="filter-tab">数据建模</div>
+                <div class="filter-tab">财务分析</div>
+            </div>
+            
+            <div class="book-grid">
+                <div class="book-card">
+                    <div class="book-cover">
+                        <div class="placeholder-cover" style="background-color: #e6f0ff;">
+                            <i class="bi bi-file-earmark-excel"></i>
+                        </div>
+                        <div class="book-badge">畅销</div>
+                    </div>
+                    <div class="book-content">
+                        <h3 class="book-title">Excel公式与函数大全</h3>
+                        <p class="book-author">作者：王小明</p>
+                        <p class="book-description">全面介绍Excel中所有常用公式和函数，包含详细的使用方法和实际案例。适合各级Excel用户参考学习。</p>
+                        <div class="book-meta">
+                            <span><i class="bi bi-calendar"></i> 2022年</span>
+                            <span><i class="bi bi-star-fill"></i> 4.8分</span>
+                        </div>
+                        <div class="book-price">¥88.00</div>
+                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">立即购买</a>
+                    </div>
+                </div>
+                
+                <div class="book-card">
+                    <div class="book-cover">
+                        <div class="placeholder-cover" style="background-color: #e6fff0;">
+                            <i class="bi bi-bar-chart"></i>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <h3 class="book-title">Power BI数据可视化实战</h3>
+                        <p class="book-author">作者：李强 / 张伟</p>
+                        <p class="book-description">从零开始学习Power BI，掌握数据可视化和商业智能报表制作的核心技能。包含多个行业案例和最佳实践。</p>
+                        <div class="book-meta">
+                            <span><i class="bi bi-calendar"></i> 2023年</span>
+                            <span><i class="bi bi-star-fill"></i> 4.7分</span>
+                        </div>
+                        <div class="book-price">¥108.00</div>
+                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">立即购买</a>
+                    </div>
+                </div>
+                
+                <div class="book-card">
+                    <div class="book-cover">
+                        <div class="placeholder-cover" style="background-color: #fff0e6;">
+                            <i class="bi bi-table"></i>
+                        </div>
+                        <div class="book-badge">新书</div>
+                    </div>
+                    <div class="book-content">
+                        <h3 class="book-title">Power Query数据处理与转换</h3>
+                        <p class="book-author">作者：刘明</p>
+                        <p class="book-description">深入讲解Power Query的各项功能，学习如何高效清洗、转换和合并数据，构建自动化的数据处理流程。</p>
+                        <div class="book-meta">
+                            <span><i class="bi bi-calendar"></i> 2023年</span>
+                            <span><i class="bi bi-star-fill"></i> 4.9分</span>
+                        </div>
+                        <div class="book-price">¥98.00</div>
+                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">立即购买</a>
+                    </div>
+                </div>
+                
+                <div class="book-card">
+                    <div class="book-cover">
+                        <div class="placeholder-cover" style="background-color: #f0e6ff;">
+                            <i class="bi bi-diagram-3"></i>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <h3 class="book-title">数据建模与DAX公式精通</h3>
+                        <p class="book-author">作者：陈志强</p>
+                        <p class="book-description">全面讲解数据建模原理和DAX公式语言，帮助读者构建高效的数据模型，编写复杂的业务计算公式。</p>
+                        <div class="book-meta">
+                            <span><i class="bi bi-calendar"></i> 2022年</span>
+                            <span><i class="bi bi-star-fill"></i> 4.6分</span>
+                        </div>
+                        <div class="book-price">¥118.00</div>
+                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">立即购买</a>
+                    </div>
+                </div>
+                
+                <div class="book-card">
+                    <div class="book-cover">
+                        <div class="placeholder-cover" style="background-color: #e6f7ff;">
+                            <i class="bi bi-code-square"></i>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <h3 class="book-title">VBA编程与Excel自动化</h3>
+                        <p class="book-author">作者：张学友</p>
+                        <p class="book-description">从零基础开始学习VBA编程，掌握Excel自动化的核心技能。包含大量实用案例和完整代码示例。</p>
+                        <div class="book-meta">
+                            <span><i class="bi bi-calendar"></i> 2021年</span>
+                            <span><i class="bi bi-star-fill"></i> 4.5分</span>
+                        </div>
+                        <div class="book-price">¥92.00</div>
+                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">立即购买</a>
+                    </div>
+                </div>
+                
+                <div class="book-card">
+                    <div class="book-cover">
+                        <div class="placeholder-cover" style="background-color: #ffe6e6;">
+                            <i class="bi bi-pie-chart"></i>
+                        </div>
+                    </div>
+                    <div class="book-content">
+                        <h3 class="book-title">财务报表与数据分析</h3>
+                        <p class="book-author">作者：李芳 / 王建国</p>
+                        <p class="book-description">专为财务人员设计的数据分析指南，讲解如何使用Excel和Power BI进行财务报表制作和财务数据分析。</p>
+                        <div class="book-meta">
+                            <span><i class="bi bi-calendar"></i> 2022年</span>
+                            <span><i class="bi bi-star-fill"></i> 4.8分</span>
+                        </div>
+                        <div class="book-price">¥108.00</div>
+                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">立即购买</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 订阅区域 -->
+    <section class="subscribe-section" style="background-color: var(--light-gray); padding: 80px 0; text-align: center;">
+        <div class="container">
+            <h2>订阅新书通知</h2>
+            <p style="max-width: 600px; margin: 0 auto 30px;">订阅我们的新书通知，第一时间获取最新图书信息和专属折扣。</p>
+            <div style="max-width: 500px; margin: 0 auto;">
+                <form style="display: flex; margin-bottom: 20px;">
+                    <input type="email" placeholder="您的邮箱地址" style="flex: 1; padding: 12px 15px; border: none; border-radius: var(--radius) 0 0 var(--radius); outline: none;">
+                    <button type="submit" class="btn btn-primary" style="border-radius: 0 var(--radius) var(--radius) 0; margin: 0;">订阅</button>
+                </form>
+                <p style="font-size: 0.9rem; color: var(--dark-gray);">我们尊重您的隐私，不会向第三方分享您的信息。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="training.html">培训课程</a></li>
+                        <li><a href="tools.html">工具产品</a></li>
+                        <li><a href="books.html">图书资源</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>资源</h4>
+                    <ul>
+                        <li><a href="articles.html">技术文章</a></li>
+                        <li><a href="#forum">交流论坛</a></li>
+                        <li><a href="#newsletter">订阅通讯</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#about">公司介绍</a></li>
+                        <li><a href="contact.html">联系方式</a></li>
+                        <li><a href="#privacy">隐私政策</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col contact-info">
+                    <h4>联系我们</h4>
+                    <p><i class="bi bi-envelope"></i> info@example.com</p>
+                    <p><i class="bi bi-geo-alt"></i> 中国上海市</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="bi bi-wechat"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-chat"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 数据分析培训中心. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // 图书筛选功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 移除所有active类
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    // 添加active类到当前点击的tab
+                    this.classList.add('active');
+                    
+                    // 这里可以添加实际的筛选逻辑
+                    // 简单示例：显示一个提示
+                    alert('已选择: ' + this.textContent + '\n(实际项目中这里会实现筛选功能)');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
