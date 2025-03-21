@@ -3,11 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>图书资源 - 方木工作室</title>
+    <title>AI图片 - 方木工作室</title>
     <link rel="stylesheet" href="styles.css">
     <!-- 添加一个简单的图标字体库 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
+
+        section {
+        	    padding: 10px 0 0px 0;
+        }
+
+        /* 基础样式 */
+        :root {
+            --primary-color: #ff6600;
+            --secondary-color: #ff9900;
+            --accent-color: #3498db;
+            --white: #ffffff;
+            --black: #333333;
+            --light-gray: #f8f8f8;
+            --dark-gray: #666666;
+            --radius: 8px;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        
         /* 图书资源页面特定样式 */
         .page-header {
             background: linear-gradient(135deg, #ff9900 0%, #ff6600 100%);
@@ -228,7 +248,7 @@
                 <li><a href="index.html">首页</a></li>
                 <li><a href="tools.html">工具产品</a></li>
                 <li><a href="training.html">培训课程</a></li>
-                <li><a href="books.html" class="active">图书资源</a></li>
+                <li><a href="books.html" class="active">AI图片</a></li>
                 <li><a href="articles.html">技术文章</a></li>
                 <li><a href="contact.html">联系我们</a></li>
             </ul>
@@ -237,190 +257,248 @@
             </div>
         </div>
     </nav>
-
-    <!-- 页面头部 -->
+<!-- 页面头部 -->
     <header class="page-header">
         <div class="container">
-            <h1>图书资源</h1>
-            <p>深入学习数据分析技能，提升专业知识</p>
+            <h1>格子间西塞罗</h1>
+            <p>聚焦当代职场“牛马”的生存图鉴，以灵魂吐槽漫画剖解社畜人生。</p>
         </div>
     </header>
 
-    <!-- 精选图书 -->
-    <section class="featured-section">
+    <!-- 主要内容 -->
+    <main>
         <div class="container">
-            <div class="featured-book">
-                <div class="featured-book-cover">
-                    <div class="placeholder-cover" style="background-color: #fff0e6;">
-                        <i class="bi bi-book"></i>
+       
+            <br/>
+            <br/>
+            <!-- 第二组图片 -->
+            <section>
+                <h2 class="section-title">可怜的打工人</h2>
+                <p class="section-description">可怜的打工人，每天都在为生活奔波，为梦想奋斗。</p>
+                
+                <div class="image-grid">
+                    <!-- 图片1 -->
+                    <div class="image-card">
+                        <div class="image-container">
+                            <div class="image-placeholder" style="background-color: #fff5e6; background-image: url('images/202503/0321_1.png');">
+                            </div>
+                        </div>
+                        <div class="image-caption">
+                            <h3 class="image-title">现代摩天楼</h3>
+                            <p class="image-description">直入云霄的现代建筑，城市繁华的象征。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 图片2 -->
+                    <div class="image-card">
+                        <div class="image-container">
+                            <div class="image-placeholder" style="background-color: #fff5e6; background-image: url('images/202503/0321_2.png');">
+                            </div>
+                        </div>
+                        <div class="image-caption">
+                            <h3 class="image-title">古典建筑</h3>
+                            <p class="image-description">蕴含历史韵味的古典建筑，展示文化传承。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 图片3 -->
+                    <div class="image-card">
+                        <div class="image-container">
+                            <div class="image-placeholder" style="background-color: #fff5e6; background-image: url('images/202503/0321_3.png');">
+                            </div>
+                        </div>
+                        <div class="image-caption">
+                            <h3 class="image-title">壮丽桥梁</h3>
+                            <p class="image-description">连接两岸的桥梁，工程技术与美学的完美结合。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 图片4 -->
+                    <div class="image-card">
+                        <div class="image-container">
+                            <div class="image-placeholder" style="background-color: #fff5e6; background-image: url('images/202503/0321_4.png');">
+                            </div>
+                        </div>
+                        <div class="image-caption">
+                            <h3 class="image-title">博物馆</h3>
+                            <p class="image-description">收藏历史与艺术的殿堂，文化交流的重要场所。</p>
+                        </div>
                     </div>
                 </div>
-                <div class="featured-book-content">
-                    <span class="featured-label">新书推荐</span>
-                    <h2>Excel数据分析实战指南：从入门到精通</h2>
-                    <p class="book-author">作者：张明 / 李华</p>
-                    <p class="book-description">这本书是Excel数据分析领域的权威指南，涵盖从基础到高级的所有技能。无论您是初学者还是有经验的分析师，都能从中获益。书中包含大量实际案例和练习，帮助您将理论知识应用到实际工作中。</p>
-                    <p class="book-description">主要内容包括：Excel基础功能、数据清洗与处理、数据透视表高级应用、Power Query与Power Pivot、数据可视化技巧、财务分析模型构建等。每章都配有详细的步骤说明和实例文件，让您轻松掌握各种技能。</p>
-                    <div class="book-meta" style="margin-top: 20px;">
-                        <span><i class="bi bi-calendar"></i> 2023年出版</span>
-                        <span><i class="bi bi-book"></i> 450页</span>
-                        <span><i class="bi bi-star-fill"></i> 4.9分 (128评价)</span>
-                    </div>
-                    <div class="book-price" style="font-size: 1.5rem;">¥128.00</div>
-                    <div>
-                        <a href="#" class="btn btn-primary">立即购买</a>
-                        <a href="#" class="btn btn-secondary">查看样章</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 图书列表 -->
-    <section class="books-section">
-        <div class="container">
-            <div class="filter-tabs">
-                <div class="filter-tab active">全部图书</div>
-                <div class="filter-tab">Excel技巧</div>
-                <div class="filter-tab">Power BI</div>
-                <div class="filter-tab">数据建模</div>
-                <div class="filter-tab">财务分析</div>
-            </div>
+            </section>
             
-            <div class="book-grid">
-                <div class="book-card">
-                    <div class="book-cover">
-                        <div class="placeholder-cover" style="background-color: #e6f0ff;">
-                            <i class="bi bi-file-earmark-excel"></i>
-                        </div>
-                        <div class="book-badge">畅销</div>
-                    </div>
-                    <div class="book-content">
-                        <h3 class="book-title">Excel公式与函数大全</h3>
-                        <p class="book-author">作者：王小明</p>
-                        <p class="book-description">全面介绍Excel中所有常用公式和函数，包含详细的使用方法和实际案例。适合各级Excel用户参考学习。</p>
-                        <div class="book-meta">
-                            <span><i class="bi bi-calendar"></i> 2022年</span>
-                            <span><i class="bi bi-star-fill"></i> 4.8分</span>
-                        </div>
-                        <div class="book-price">¥88.00</div>
-                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">立即购买</a>
-                    </div>
-                </div>
+            <!-- 第2组图片 -->
+            <section>
+                <h2 class="section-title">可怜的牛马</h2>
+                <p class="section-description">牛马什么的，每天都在为生活奔波，为梦想奋斗。</p>
                 
-                <div class="book-card">
-                    <div class="book-cover">
-                        <div class="placeholder-cover" style="background-color: #e6fff0;">
-                            <i class="bi bi-bar-chart"></i>
+                <div class="image-grid">
+                    <!-- 图片1 -->
+                    <div class="image-card">
+                        <div class="image-container">
+                            <div class="image-placeholder" style="background-color: #f0f5e6; background-image: url('images/202503/0322_1.png');">
+                            </div>
+                        </div>
+                        <div class="image-caption">
+                            <h3 class="image-title">草原之王</h3>
+                            <p class="image-description">威严的狮子，展示着自然界的力量与尊严。</p>
                         </div>
                     </div>
-                    <div class="book-content">
-                        <h3 class="book-title">Power BI数据可视化实战</h3>
-                        <p class="book-author">作者：李强 / 张伟</p>
-                        <p class="book-description">从零开始学习Power BI，掌握数据可视化和商业智能报表制作的核心技能。包含多个行业案例和最佳实践。</p>
-                        <div class="book-meta">
-                            <span><i class="bi bi-calendar"></i> 2023年</span>
-                            <span><i class="bi bi-star-fill"></i> 4.7分</span>
+                    
+                    <!-- 图片2 -->
+                    <div class="image-card">
+                        <div class="image-container">
+                            <div class="image-placeholder" style="background-color: #f0f5e6; background-image: url('images/202503/0322_2.png');">
+                            </div>
                         </div>
-                        <div class="book-price">¥108.00</div>
-                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">立即购买</a>
+                        <div class="image-caption">
+                            <h3 class="image-title">温顺巨象</h3>
+                            <p class="image-description">体型庞大却性情温顺的大象，智慧与力量的象征。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 图片3 -->
+                    <div class="image-card">
+                        <div class="image-container">
+                            <div class="image-placeholder" style="background-color: #f0f5e6; background-image: url('images/202503/0322_3.png');">
+                            </div>
+                        </div>
+                        <div class="image-caption">
+                            <h3 class="image-title">翱翔雄鹰</h3>
+                            <p class="image-description">在高空中自由翱翔的雄鹰，展示无拘无束的自由。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 图片4 -->
+                    <div class="image-card">
+                        <div class="image-container">
+                            <div class="image-placeholder" style="background-color: #f0f5e6; background-image: url('images/202503/0322_4.png');">
+                            </div>
+                        </div>
+                        <div class="image-caption">
+                            <h3 class="image-title">海洋精灵</h3>
+                            <p class="image-description">聪明活泼的海豚，海洋中最富智慧的生物之一。</p>
+                        </div>
                     </div>
                 </div>
+            </section>
+            
+            <!-- 第四组图片 -->
+            <section>
+                <h2 class="section-title">旋转的驴</h2>
+                <p class="section-description">旋转的驴，每天都在为生活奔波，为梦想奋斗。</p>
                 
-                <div class="book-card">
-                    <div class="book-cover">
-                        <div class="placeholder-cover" style="background-color: #fff0e6;">
-                            <i class="bi bi-table"></i>
+                <div class="image-grid">
+                    <!-- 图片1 -->
+                    <div class="image-card">
+                        <div class="image-container">
+                            <div class="image-placeholder" style="background-color: #f5f0ff; background-image: url('images/202503/0323_1.png');">
+                            </div>
                         </div>
-                        <div class="book-badge">新书</div>
+                        <div class="image-caption">
+                            <h3 class="image-title">抽象绘画</h3>
+                            <p class="image-description">色彩与形状的奇妙结合，展现艺术家的独特视角。</p>
+                        </div>
                     </div>
-                    <div class="book-content">
-                        <h3 class="book-title">Power Query数据处理与转换</h3>
-                        <p class="book-author">作者：刘明</p>
-                        <p class="book-description">深入讲解Power Query的各项功能，学习如何高效清洗、转换和合并数据，构建自动化的数据处理流程。</p>
-                        <div class="book-meta">
-                            <span><i class="bi bi-calendar"></i> 2023年</span>
-                            <span><i class="bi bi-star-fill"></i> 4.9分</span>
+                    
+                    <!-- 图片2 -->
+                    <div class="image-card">
+                        <div class="image-container">
+                            <div class="image-placeholder" style="background-color: #f5f0ff; background-image: url('images/202503/0323_2.png');">
+                            </div>
                         </div>
-                        <div class="book-price">¥98.00</div>
-                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">立即购买</a>
+                        <div class="image-caption">
+                            <h3 class="image-title">精美雕塑</h3>
+                            <p class="image-description">立体空间中的艺术表达，凝固的瞬间与情感。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 图片3 -->
+                    <div class="image-card">
+                        <div class="image-container">
+                            <div class="image-placeholder" style="background-color: #f5f0ff; background-image: url('images/202503/0323_3.png');">
+                            </div>
+                        </div>
+                        <div class="image-caption">
+                            <h3 class="image-title">摄影艺术</h3>
+                            <p class="image-description">捕捉瞬间的艺术，通过镜头展示独特的视角。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 图片4 -->
+                    <div class="image-card">
+                        <div class="image-container">
+                            <div class="image-placeholder" style="background-color: #f5f0ff; background-image: url('images/202503/0323_4.png');">
+                            </div>
+                        </div>
+                        <div class="image-caption">
+                            <h3 class="image-title">装置艺术</h3>
+                            <p class="image-description">空间中的艺术体验，引发观众思考与互动。</p>
+                        </div>
                     </div>
                 </div>
+            </section>
+       
+       
+            <!-- 第组图片 -->
+            <section>
+                <h2 class="section-title">疲惫打工人</h2>
+                <p class="section-description">疲惫打工人，每天都在为生活奔波，为梦想奋斗。</p> 
                 
-                <div class="book-card">
-                    <div class="book-cover">
-                        <div class="placeholder-cover" style="background-color: #f0e6ff;">
-                            <i class="bi bi-diagram-3"></i>
+                <div class="image-grid">
+                    <!-- 图片1 -->
+                    <div class="image-card">
+                        <div class="image-container">
+                            <div class="image-placeholder" style="background-color: #e6f7ff; background-image: url('images/1-1.png');">
+                            </div>
+                        </div>
+                        <div class="image-caption">
+                            <h3 class="image-title">雄伟山脉</h3>
+                            <p class="image-description">高耸入云的山峰，展现大自然的壮丽与神秘。</p>
                         </div>
                     </div>
-                    <div class="book-content">
-                        <h3 class="book-title">数据建模与DAX公式精通</h3>
-                        <p class="book-author">作者：陈志强</p>
-                        <p class="book-description">全面讲解数据建模原理和DAX公式语言，帮助读者构建高效的数据模型，编写复杂的业务计算公式。</p>
-                        <div class="book-meta">
-                            <span><i class="bi bi-calendar"></i> 2022年</span>
-                            <span><i class="bi bi-star-fill"></i> 4.6分</span>
+                    
+                    <!-- 图片2 -->
+                    <div class="image-card">
+                        <div class="image-container">
+                            <div class="image-placeholder" style="background-color: #e6f7ff; background-image: url('images/1-2.png');">
+                            </div>
                         </div>
-                        <div class="book-price">¥118.00</div>
-                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">立即购买</a>
+                        <div class="image-caption">
+                            <h3 class="image-title">碧蓝海洋</h3>
+                            <p class="image-description">广阔无边的海洋，承载着无尽的生命与故事。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 图片3 -->
+                    <div class="image-card">
+                        <div class="image-container">
+                            <div class="image-placeholder" style="background-color: #e6f7ff; background-image: url('images/1-3.png');">
+                            </div>
+                        </div>
+                        <div class="image-caption">
+                            <h3 class="image-title">神秘森林</h3>
+                            <p class="image-description">郁郁葱葱的森林，孕育着丰富的生物多样性。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 图片4 -->
+                    <div class="image-card">
+                        <div class="image-container">
+                            <div class="image-placeholder" style="background-color: #e6f7ff; background-image: url('images/1-4.png');">
+                            </div>
+                        </div>
+                        <div class="image-caption">
+                            <h3 class="image-title">蜿蜒河流</h3>
+                            <p class="image-description">流淌的河水，滋润大地，承载着文明的发展。</p>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="book-card">
-                    <div class="book-cover">
-                        <div class="placeholder-cover" style="background-color: #e6f7ff;">
-                            <i class="bi bi-code-square"></i>
-                        </div>
-                    </div>
-                    <div class="book-content">
-                        <h3 class="book-title">VBA编程与Excel自动化</h3>
-                        <p class="book-author">作者：张学友</p>
-                        <p class="book-description">从零基础开始学习VBA编程，掌握Excel自动化的核心技能。包含大量实用案例和完整代码示例。</p>
-                        <div class="book-meta">
-                            <span><i class="bi bi-calendar"></i> 2021年</span>
-                            <span><i class="bi bi-star-fill"></i> 4.5分</span>
-                        </div>
-                        <div class="book-price">¥92.00</div>
-                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">立即购买</a>
-                    </div>
-                </div>
-                
-                <div class="book-card">
-                    <div class="book-cover">
-                        <div class="placeholder-cover" style="background-color: #ffe6e6;">
-                            <i class="bi bi-pie-chart"></i>
-                        </div>
-                    </div>
-                    <div class="book-content">
-                        <h3 class="book-title">财务报表与数据分析</h3>
-                        <p class="book-author">作者：李芳 / 王建国</p>
-                        <p class="book-description">专为财务人员设计的数据分析指南，讲解如何使用Excel和Power BI进行财务报表制作和财务数据分析。</p>
-                        <div class="book-meta">
-                            <span><i class="bi bi-calendar"></i> 2022年</span>
-                            <span><i class="bi bi-star-fill"></i> 4.8分</span>
-                        </div>
-                        <div class="book-price">¥108.00</div>
-                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">立即购买</a>
-                    </div>
-                </div>
-            </div>
+            </section>
+       
+       
         </div>
-    </section>
-
-    <!-- 订阅区域 -->
-    <section class="subscribe-section" style="background-color: var(--light-gray); padding: 80px 0; text-align: center;">
-        <div class="container">
-            <h2>订阅新书通知</h2>
-            <p style="max-width: 600px; margin: 0 auto 30px;">订阅我们的新书通知，第一时间获取最新图书信息和专属折扣。</p>
-            <div style="max-width: 500px; margin: 0 auto;">
-                <form style="display: flex; margin-bottom: 20px;">
-                    <input type="email" placeholder="您的邮箱地址" style="flex: 1; padding: 12px 15px; border: none; border-radius: var(--radius) 0 0 var(--radius); outline: none;">
-                    <button type="submit" class="btn btn-primary" style="border-radius: 0 var(--radius) var(--radius) 0; margin: 0;">订阅</button>
-                </form>
-                <p style="font-size: 0.9rem; color: var(--dark-gray);">我们尊重您的隐私，不会向第三方分享您的信息。</p>
-            </div>
-        </div>
-    </section>
+    </main>
 
     <!-- 页脚 -->
     <footer class="footer">
@@ -472,24 +550,6 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // 图书筛选功能
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterTabs = document.querySelectorAll('.filter-tab');
-            
-            filterTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    // 移除所有active类
-                    filterTabs.forEach(t => t.classList.remove('active'));
-                    // 添加active类到当前点击的tab
-                    this.classList.add('active');
-                    
-                    // 这里可以添加实际的筛选逻辑
-                    // 简单示例：显示一个提示
-                    alert('已选择: ' + this.textContent + '\n(实际项目中这里会实现筛选功能)');
-                });
-            });
-        });
-    </script>
+   
 </body>
 </html> 
