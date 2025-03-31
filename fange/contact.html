@@ -20,10 +20,11 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
-            margin: 80px 0;
+            margin: 0 0;
         }
-        
-        .contact-info {
+
+       
+        .contact-page-info {
             display: flex;
             flex-direction: column;
             gap: 30px;
@@ -206,7 +207,7 @@
                 gap: 40px;
             }
             
-            .contact-info {
+            .contact-page-info {
                 order: 1;
             }
         }
@@ -222,9 +223,9 @@
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">首页</a></li>
-                <li><a href="training.html">培训课程</a></li>
                 <li><a href="tools.html">工具产品</a></li>
-                <li><a href="books.html">图书资源</a></li>
+                <li><a href="training.html">培训课程</a></li>
+                <li><a href="books.html">AI图片</a></li>
                 <li><a href="articles.html">技术文章</a></li>
                 <li><a href="contact.html" class="active">联系我们</a></li>
             </ul>
@@ -247,53 +248,26 @@
         <div class="container">
             <div class="contact-container">
                 <div class="contact-form">
-                    <h2 style="margin-bottom: 30px;">发送消息</h2>
                     <form>
                         <div class="form-group">
-                            <label for="name">您的姓名</label>
-                            <input type="text" id="name" class="form-control" placeholder="请输入您的姓名">
+                            <h2 style="margin-bottom: 30px;"><center>方木工作室</center></h2>
+
+       	                  	<img src="images/cellimage.png"  width="450" height="655">
+
                         </div>
                         
-                        <div class="form-group">
-                            <label for="email">电子邮箱</label>
-                            <input type="email" id="email" class="form-control" placeholder="请输入您的电子邮箱">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">联系电话</label>
-                            <input type="tel" id="phone" class="form-control" placeholder="请输入您的联系电话">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">主题</label>
-                            <select id="subject" class="form-control">
-                                <option value="">请选择主题</option>
-                                <option value="course">培训课程咨询</option>
-                                <option value="tool">工具产品咨询</option>
-                                <option value="book">图书资源咨询</option>
-                                <option value="cooperation">商务合作</option>
-                                <option value="other">其他问题</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">您的消息</label>
-                            <textarea id="message" class="form-control" placeholder="请输入您的消息内容"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">发送消息</button>
                     </form>
                 </div>
                 
-                <div class="contact-info">
+                <div class="contact-page-info">
                     <div class="contact-card">
                         <div class="contact-icon">
                             <i class="bi bi-geo-alt"></i>
                         </div>
                         <div class="contact-content">
-                            <h3>公司地址</h3>
-                            <p>中国上海市浦东新区张江高科技园区</p>
-                            <p>科技大道88号8楼</p>
+                            <h3>方木工作组成员</h3>
+                            <p>seng、方木、墨蛮子、jaakkojiang、liyan</p>
+                            <p></p>
                         </div>
                     </div>
                     
@@ -303,8 +277,8 @@
                         </div>
                         <div class="contact-content">
                             <h3>电子邮箱</h3>
-                            <p>info@example.com</p>
-                            <p>support@example.com</p>
+                            <p>seng@fangmu.tech</p>
+                            <p></p>
                         </div>
                     </div>
                     
@@ -313,9 +287,9 @@
                             <i class="bi bi-telephone"></i>
                         </div>
                         <div class="contact-content">
-                            <h3>联系电话</h3>
-                            <p>400-123-4567（客服热线）</p>
-                            <p>021-87654321（办公室）</p>
+                            <h3>联系方式</h3>
+                            <p>wx微信号:sengat126</p>
+                            <p>qq群:1018253931</p>
                         </div>
                     </div>
                     
@@ -324,9 +298,9 @@
                             <i class="bi bi-clock"></i>
                         </div>
                         <div class="contact-content">
-                            <h3>工作时间</h3>
-                            <p>周一至周五: 9:00 - 18:00</p>
-                            <p>周六: 9:00 - 12:00（仅客服）</p>
+                            <h3>公众号:fangmu_tech(方木格子)</h3>
+                            <p></p>
+                            <p></p>
                         </div>
                     </div>
                     
@@ -348,88 +322,9 @@
                 </div>
             </div>
             
-            <div class="map-container">
-                <div class="map-placeholder">
-                    <p>这里将显示公司地址的地图（实际项目中可嵌入地图API）</p>
-                </div>
-            </div>
         </div>
     </section>
 
-    <!-- 常见问题 -->
-    <section class="faq-section">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 50px;">常见问题</h2>
-            
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        如何报名参加培训课程？
-                        <i class="bi bi-chevron-down faq-toggle"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>您可以通过以下几种方式报名我们的培训课程：</p>
-                        <ol>
-                            <li>在我们的网站上选择您感兴趣的课程，点击"立即报名"按钮。</li>
-                            <li>拨打我们的客服热线400-123-4567，由客服人员协助您完成报名。</li>
-                            <li>发送邮件至info@example.com，注明您想参加的课程名称和时间。</li>
-                            <li>直接前往我们的办公地点进行现场报名。</li>
-                        </ol>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        培训课程是否提供退款服务？
-                        <i class="bi bi-chevron-down faq-toggle"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>我们的退款政策如下：</p>
-                        <ul>
-                            <li>课程开始前7天以上申请退款，可获得全额退款。</li>
-                            <li>课程开始前3-7天申请退款，可获得80%退款。</li>
-                            <li>课程开始前3天内申请退款，可获得50%退款。</li>
-                            <li>课程开始后，原则上不予退款。特殊情况可与客服联系协商解决。</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        如何获取工具产品的技术支持？
-                        <i class="bi bi-chevron-down faq-toggle"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>购买我们的工具产品后，您可以通过以下方式获取技术支持：</p>
-                        <ul>
-                            <li>发送邮件至support@example.com，描述您遇到的问题。</li>
-                            <li>拨打技术支持热线400-123-4567转2。</li>
-                            <li>在我们的官方论坛上发帖咨询。</li>
-                            <li>企业版客户可联系您的专属客户经理。</li>
-                        </ul>
-                        <p>我们的技术支持团队会在24小时内回复您的问题。</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        是否提供企业定制培训服务？
-                        <i class="bi bi-chevron-down faq-toggle"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>是的，我们提供企业定制培训服务。我们会根据企业的具体需求和行业特点，量身定制培训内容和方案。企业定制培训的优势包括：</p>
-                        <ul>
-                            <li>针对企业实际业务场景的定制化内容</li>
-                            <li>灵活的培训时间和地点安排</li>
-                            <li>可容纳多名员工同时参训，提高培训效率</li>
-                            <li>培训后的跟踪服务和技术支持</li>
-                        </ul>
-                        <p>如需了解更多信息或预约企业培训，请联系我们的商务团队。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- 页脚 -->
     <footer class="footer">
@@ -440,42 +335,39 @@
                     <ul>
                         <li><a href="training.html">培训课程</a></li>
                         <li><a href="tools.html">工具产品</a></li>
-                        <li><a href="books.html">图书资源</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-col">
                     <h4>资源</h4>
                     <ul>
+                        <li><a href="books.html">图书资源</a></li>
                         <li><a href="articles.html">技术文章</a></li>
-                        <li><a href="#forum">交流论坛</a></li>
-                        <li><a href="#newsletter">订阅通讯</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-col">
                     <h4>关于我们</h4>
                     <ul>
-                        <li><a href="#about">公司介绍</a></li>
+                        <li><a href="contact.html">工作室介绍</a></li>
                         <li><a href="contact.html">联系方式</a></li>
-                        <li><a href="#privacy">隐私政策</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-col contact-info">
                     <h4>联系我们</h4>
-                    <p><i class="bi bi-envelope"></i> info@example.com</p>
+                    <p><i class="bi bi-envelope"></i> support@fangmu.tech</p>
                     <p><i class="bi bi-geo-alt"></i> 中国上海市</p>
                     <div class="social-icons">
-                        <a href="#" class="social-icon"><i class="bi bi-wechat"></i></a>
-                        <a href="#" class="social-icon"><i class="bi bi-chat"></i></a>
-                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                        <a href="contact.html" class="social-icon"><i class="bi bi-wechat"></i></a>
+                        <a href="contact.html" class="social-icon"><i class="bi bi-chat"></i></a>
+                        <a href="contact.html" class="social-icon"><i class="bi bi-linkedin"></i></a>
                     </div>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>© 2023 数据分析培训中心. 保留所有权利.</p>
+                <p>? 2025 方木工作室. 保留所有权利.</p>
             </div>
         </div>
     </footer>
