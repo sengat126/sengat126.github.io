@@ -690,3 +690,57 @@ section {
         display: block;
     }
 }
+
+
+
+
+
+.helpcontainer {
+    display: flex; /* 使用 flexbox 布局 */
+    /*height: 100vh;  设置容器高度为视口高度 */
+}
+
+.helpsidebar {
+    width: 200px; /* 导航栏宽度 */
+    background-color: #f4f4f4;
+    padding: 20px;
+    overflow-y: auto; /* 当内容超出时显示垂直滚动条 */
+}
+
+.helpsidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.helpsidebar ul li {
+    margin-bottom: 10px;
+}
+
+.helpsidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 5px;
+}
+
+.helpsidebar ul li a:hover {
+    background-color: #ddd;
+}
+
+.helpcontent {
+    flex: 1; /* 内容区域占据剩余空间 */
+    padding: 20px 0 0 20px;
+    overflow-y: auto; /* 当内容超出时显示垂直滚动条 */
+}
+
+/* 导航项激活状态样式 */
+.helpsidebar ul li a.active {
+    background-color: #007BFF;
+    color: white;
+}
+
+
+/* 英雄区域样式 */
+.helpcontentsection {
+    padding: 5px 0;
+}
